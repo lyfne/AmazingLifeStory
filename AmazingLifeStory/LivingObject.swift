@@ -20,29 +20,69 @@ class Node: NSObject {
     var childRight: Node?
 }
 
+class Gene: NSObject {
+    var geneId = 0
+    var geneName: String = ""
+    var geneValue = 0.0
+    var geneEvoStep = 0.0
+    var upperBound = 1.0
+    var lowerBound = 0.0
+    
+    init(id: Int, name: String, value: Double, evoStep: Double) {
+        geneId = id
+        geneName = name
+        geneValue = value
+        geneEvoStep = evoStep
+    }
+    
+    func evolution() {
+        if (arc4random_uniform(9) < 5) {
+            if (geneValue + geneEvoStep < upperBound) {
+                geneValue += geneEvoStep
+            }
+        }else {
+            if (geneValue - geneEvoStep > lowerBound) {
+                geneValue -= geneEvoStep
+            }
+        }
+    }
+}
+
 class LivingObject: NSObject {
     //Gene
-    var geneOddLength = 0.6
-    var geneEvenLength = 0.6
-    var geneOddAngle = 0.25
-    var geneEvenAngle = 0.25
-    var geneNonFirstChildAngleRateLeft = 1.0 //Right is 2.0 - left
-    var geneChildrenCount = 5
+    var geneOddLength = Gene(id: 0, name: "GeneOddLength", value: 0.6, evoStep:0.03)
+    var geneEvenLength = Gene(id: 1, name: "GeneEvenLength", value: 0.6, evoStep:0.03)
+    var geneOddAngle = Gene(id: 2, name: "GeneOddAngle", value: 0.25, evoStep:0.03)
+    var geneEvenAngle = Gene(id: 3, name: "GeneEvenAngle", value: 0.25, evoStep:0.03)
+    var geneNonFirstChildAngleRateLeft = Gene(id: 4, name: "GeneAngleRateLeft", value: 1.0, evoStep:0.03) //Right is 2.0 - left
+    var geneColorR = Gene(id: 5, name: "GeneColorR", value: 0.0, evoStep:0.06)
+    var geneColorG = Gene(id: 6, name: "GeneColorG", value: 0.0, evoStep:0.06)
+    var geneColorB = Gene(id: 7, name: "GeneColorB", value: 0.0, evoStep:0.06)
+    var geneChildrenCount = Gene(id: 8, name: "GeneChildrenCount", value: 5.0, evoStep:1.0)
+    var geneLengthOfFirstBranch = Gene(id: 9, name: "GeneLengthOfFirstBranch", value: 40.0, evoStep:5.0)
+    var genes = [Gene]()
     
-    let geneLengthEvoStep = 0.05
-    let geneAngleEvoStep = 0.05
-    let geneAngleRateEvoStep = 0.05
-    let geneChildrenCountEvoStep = 1
-    
-    //Other properties
     var nodes = [Node]()
-    var lengthOfFirstBranch = 40.0
     
     //phenotype
     var phenotypeOddLength = 0.0
-    var phenotypeEvenLength = 40.0
-    var phenotypeOddAngle = 0.25
-    var phenotypeEvenAngle = 0.25
+    var phenotypeEvenLength = 0.0
+    
+    override init() {
+        phenotypeEvenLength = geneLengthOfFirstBranch.geneValue
+
+        geneOddLength.upperBound = 1.0
+        geneEvenLength.upperBound = 1.0
+        geneOddAngle.upperBound = 2.0
+        geneEvenAngle.upperBound = 2.0
+        geneNonFirstChildAngleRateLeft.geneEvoStep = 0.0
+        geneChildrenCount.upperBound = 8.0
+        geneChildrenCount.lowerBound = 3.0
+        geneLengthOfFirstBranch.upperBound = 100.0
+        geneLengthOfFirstBranch.lowerBound = 20.0
+        
+        genes = [geneOddLength, geneEvenLength, geneOddAngle, geneEvenAngle, geneNonFirstChildAngleRateLeft, geneColorR, geneColorG, geneColorB, geneChildrenCount, geneLengthOfFirstBranch]
+    }
     
     func getNodeAt(index: Int)->Node? {
         var node: Node?
@@ -55,7 +95,7 @@ class LivingObject: NSObject {
     
     func reset() {
         phenotypeOddLength = 0.0
-        phenotypeEvenLength = lengthOfFirstBranch
+        phenotypeEvenLength = geneLengthOfFirstBranch.geneValue
         
         nodes.removeAll()
     }
@@ -71,23 +111,23 @@ class LivingObject: NSObject {
         var ratio = 0.0
         var angle = 0.0
         if(odd) {
-            phenotypeOddLength = phenotypeEvenLength * geneOddLength
+            phenotypeOddLength = phenotypeEvenLength * geneOddLength.geneValue
             ratio = (phenotypeOddLength / phenotypeEvenLength + 1)
-            angle = M_PI * phenotypeOddAngle
+            angle = M_PI * geneOddAngle.geneValue
         }else {
-            phenotypeEvenLength = phenotypeOddLength * geneEvenLength
+            phenotypeEvenLength = phenotypeOddLength * geneEvenLength.geneValue
             ratio = (phenotypeEvenLength / phenotypeOddLength + 1)
-            angle = M_PI * phenotypeEvenAngle
+            angle = M_PI * geneEvenAngle.geneValue
         }
         
         let x = ratio * Double(parentNode.position.x - parentNode.parent!.position.x) + Double(parentNode.parent!.position.x) - Double(parentNode.position.x)
         let y = ratio * Double(parentNode.position.y - parentNode.parent!.position.y) + Double(parentNode.parent!.position.y) - Double(parentNode.position.y)
         
-        let xL = cos(angle * geneNonFirstChildAngleRateLeft) * x - sin(angle * geneNonFirstChildAngleRateLeft) * y + Double(parentNode.position.x)
-        let yL = sin(angle * geneNonFirstChildAngleRateLeft) * x + cos(angle * geneNonFirstChildAngleRateLeft) * y + Double(parentNode.position.y)
+        let xL = cos(angle * geneNonFirstChildAngleRateLeft.geneValue) * x - sin(angle * geneNonFirstChildAngleRateLeft.geneValue) * y + Double(parentNode.position.x)
+        let yL = sin(angle * geneNonFirstChildAngleRateLeft.geneValue) * x + cos(angle * geneNonFirstChildAngleRateLeft.geneValue) * y + Double(parentNode.position.y)
         
-        let xR = cos(-angle * (2.0 - geneNonFirstChildAngleRateLeft)) * x - sin(-angle * (2.0 - geneNonFirstChildAngleRateLeft)) * y + Double(parentNode.position.x)
-        let yR = sin(-angle * (2.0 - geneNonFirstChildAngleRateLeft)) * x + cos(-angle * (2.0 - geneNonFirstChildAngleRateLeft)) * y + Double(parentNode.position.y)
+        let xR = cos(-angle * (2.0 - geneNonFirstChildAngleRateLeft.geneValue)) * x - sin(-angle * (2.0 - geneNonFirstChildAngleRateLeft.geneValue)) * y + Double(parentNode.position.x)
+        let yR = sin(-angle * (2.0 - geneNonFirstChildAngleRateLeft.geneValue)) * x + cos(-angle * (2.0 - geneNonFirstChildAngleRateLeft.geneValue)) * y + Double(parentNode.position.y)
         
         let newNodeLeft = Node(x:xL, y:yL)
         let newNodeRight = Node(x:xR, y:yR)
@@ -101,6 +141,7 @@ class LivingObject: NSObject {
     }
     
     func evolution() {
-        
+        let index = arc4random_uniform(UInt32(genes.count))
+        genes[Int(index)].evolution()
     }
 }

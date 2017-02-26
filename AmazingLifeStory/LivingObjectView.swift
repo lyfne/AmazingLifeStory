@@ -16,7 +16,7 @@ class LivingObjectView: NSView {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         if (bShow) {
-            let lineWidth: CGFloat = 2.0
+            let lineWidth: CGFloat = 1.0
             let finalPath = NSBezierPath()
             finalPath.lineWidth = lineWidth
             
@@ -31,17 +31,19 @@ class LivingObjectView: NSView {
                     {
                         let pathL = NSBezierPath()
                         pathL.move(to: parentNode.position)
-                        pathL.line(to: parentNode.childLeft!.position)
+                        pathL.curve(to: parentNode.childLeft!.position, controlPoint1: NSPoint(x:parentNode.childLeft!.position.x, y:parentNode.position.y), controlPoint2: NSPoint(x:parentNode.childLeft!.position.x, y:parentNode.position.y))
                         let pathR = NSBezierPath()
                         pathR.move(to: parentNode.position)
-                        pathR.line(to: parentNode.childRight!.position)
+                        //pathR.line(to: parentNode.childRight!.position)
+                        pathR.curve(to: parentNode.childRight!.position, controlPoint1: NSPoint(x:parentNode.childRight!.position.x, y:parentNode.position.y), controlPoint2: NSPoint(x:parentNode.childRight!.position.x, y:parentNode.position.y))
                         finalPath.append(pathL)
                         finalPath.append(pathR)
                     }
                 }
             }
             
-            NSColor.black.setStroke()
+            let color = NSColor(red: CGFloat(livingObject.geneColorR.geneValue), green: CGFloat(livingObject.geneColorG.geneValue), blue: CGFloat(livingObject.geneColorB.geneValue), alpha: 1.0)
+            color.setStroke()
             finalPath.stroke()
         }
     }
@@ -49,12 +51,12 @@ class LivingObjectView: NSView {
     func show() {
         livingObject.reset()
         let rootNode = Node(x: Double(bounds.width) / 2.0, y: Double(bounds.height) * 0.3)
-        let subRootNode = Node(x:Double(bounds.width) / 2.0, y:Double(bounds.height) * 0.3 + livingObject.lengthOfFirstBranch)
+        let subRootNode = Node(x:Double(bounds.width) / 2.0, y:Double(bounds.height) * 0.3 + livingObject.geneLengthOfFirstBranch.geneValue)
         subRootNode.parent = rootNode
         livingObject.nodes.append(rootNode)
         livingObject.nodes.append(subRootNode)
         
-        for growCount in 1...livingObject.geneChildrenCount {
+        for growCount in 1...Int(livingObject.geneChildrenCount.geneValue) {
             let nodeMax = Int(pow(2.0, Double(growCount - 1)))
             for nodeCount in 1...nodeMax {
                 if (self.livingObject.getNodeAt(index: nodeCount) != nil) {
