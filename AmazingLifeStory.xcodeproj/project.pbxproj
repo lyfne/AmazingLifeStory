@@ -13,6 +13,9 @@
 		DA4535721E57EADB00DFA326 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4535701E57EADB00DFA326 /* Main.storyboard */; };
 		DA45357D1E57EADB00DFA326 /* AmazingLifeStoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA45357C1E57EADB00DFA326 /* AmazingLifeStoryTests.swift */; };
 		DA4535881E57EADB00DFA326 /* AmazingLifeStoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4535871E57EADB00DFA326 /* AmazingLifeStoryUITests.swift */; };
+		DA4535961E57EB6900DFA326 /* LivingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4535951E57EB6900DFA326 /* LivingObject.swift */; };
+		DAFBFBFA1E61338000E2A8BF /* LivingObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBFBF91E61338000E2A8BF /* LivingObjectView.swift */; };
+		DAFBFBFD1E61CACC00E2A8BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFBFBFC1E61CACC00E2A8BF /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		DA4535831E57EADB00DFA326 /* AmazingLifeStoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmazingLifeStoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4535871E57EADB00DFA326 /* AmazingLifeStoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazingLifeStoryUITests.swift; sourceTree = "<group>"; };
 		DA4535891E57EADB00DFA326 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA4535951E57EB6900DFA326 /* LivingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivingObject.swift; sourceTree = "<group>"; };
+		DAFBFBF91E61338000E2A8BF /* LivingObjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivingObjectView.swift; sourceTree = "<group>"; };
+		DAFBFBFC1E61CACC00E2A8BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAFBFBFD1E61CACC00E2A8BF /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +86,7 @@
 				DA45357B1E57EADB00DFA326 /* AmazingLifeStoryTests */,
 				DA4535861E57EADB00DFA326 /* AmazingLifeStoryUITests */,
 				DA4535681E57EADB00DFA326 /* Products */,
+				DAFBFBFB1E61CACC00E2A8BF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +108,8 @@
 				DA45356E1E57EADB00DFA326 /* Assets.xcassets */,
 				DA4535701E57EADB00DFA326 /* Main.storyboard */,
 				DA4535731E57EADB00DFA326 /* Info.plist */,
+				DA4535951E57EB6900DFA326 /* LivingObject.swift */,
+				DAFBFBF91E61338000E2A8BF /* LivingObjectView.swift */,
 			);
 			path = AmazingLifeStory;
 			sourceTree = "<group>";
@@ -120,6 +130,14 @@
 				DA4535891E57EADB00DFA326 /* Info.plist */,
 			);
 			path = AmazingLifeStoryUITests;
+			sourceTree = "<group>";
+		};
+		DAFBFBFB1E61CACC00E2A8BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DAFBFBFC1E61CACC00E2A8BF /* QuartzCore.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +274,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA45356D1E57EADB00DFA326 /* ViewController.swift in Sources */,
+				DAFBFBFA1E61338000E2A8BF /* LivingObjectView.swift in Sources */,
+				DA4535961E57EB6900DFA326 /* LivingObject.swift in Sources */,
 				DA45356B1E57EADB00DFA326 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,6 +516,7 @@
 				DA45358E1E57EADB00DFA326 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA45358F1E57EADB00DFA326 /* Build configuration list for PBXNativeTarget "AmazingLifeStoryTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +525,7 @@
 				DA4535911E57EADB00DFA326 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA4535921E57EADB00DFA326 /* Build configuration list for PBXNativeTarget "AmazingLifeStoryUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +534,7 @@
 				DA4535941E57EADB00DFA326 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
