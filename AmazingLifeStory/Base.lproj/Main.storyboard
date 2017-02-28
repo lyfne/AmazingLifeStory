@@ -919,10 +919,34 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0x1-UK-IVI">
+                                <rect key="frame" x="526" y="127" width="34" height="13"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Small" id="gmz-gL-vTO">
+                                    <font key="font" metaFont="system" size="10"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <levelIndicator verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H7n-Y0-Gz6">
+                                <rect key="frame" x="560" y="124" width="168" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <levelIndicatorCell key="cell" editable="YES" alignment="left" doubleValue="5" maxValue="10" warningValue="2" criticalValue="2" id="Ok8-ha-r3s"/>
+                            </levelIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTH-mI-4GQ">
+                                <rect key="frame" x="728" y="127" width="34" height="13"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Large" id="WRz-YQ-tmM">
+                                    <font key="font" metaFont="system" size="10"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="RunningTimesTextField" destination="eKe-SP-XGo" id="VpD-PH-FwM"/>
+                        <outlet property="evoStepIndicator" destination="H7n-Y0-Gz6" id="sKs-4E-Y5N"/>
                         <outlet property="geneAngleRateLeftTextField" destination="hZ8-OQ-tYH" id="7gc-hK-F18"/>
                         <outlet property="geneChildrenCountTextField" destination="WCt-fV-sjR" id="7To-Y0-ZZW"/>
                         <outlet property="geneColorB" destination="mfH-1R-fXd" id="DbL-AM-7kW"/>
@@ -940,5 +964,63 @@
             </objects>
             <point key="canvasLocation" x="225" y="790"/>
         </scene>
+        <!--Custom Gene View Controller-->
+        <scene sceneID="HSJ-Pg-bg9">
+            <objects>
+                <viewController id="CPR-zu-OXa" customClass="CustomGeneViewController" customModule="AmazingLifeStory" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="uvx-ey-O4N">
+                        <rect key="frame" x="0.0" y="0.0" width="468" height="22"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLP-Bw-7wF">
+                                <rect key="frame" x="-2" y="0.0" width="130" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="GeneColorB" id="6W9-xz-Xon">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K4d-7T-9Cq">
+                                <rect key="frame" x="136" y="0.0" width="96" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="3Ja-9L-OnS">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="8ve-DI-4cX"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W0W-We-ZTW">
+                                <rect key="frame" x="240" y="0.0" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Down" id="cLK-yw-Lxv"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pmA-5W-evh">
+                                <rect key="frame" x="446" y="0.0" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Up" id="CH4-kT-WX2"/>
+                            </imageView>
+                            <levelIndicator verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vyc-zy-WNL">
+                                <rect key="frame" x="270" y="1" width="168" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <levelIndicatorCell key="cell" editable="YES" alignment="left" doubleValue="5" maxValue="10" warningValue="2" criticalValue="2" id="GqQ-3f-KMF"/>
+                            </levelIndicator>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="GeneNameTextField" destination="dLP-Bw-7wF" id="vro-lb-ZRM"/>
+                        <outlet property="InputValueTextField" destination="K4d-7T-9Cq" id="rNE-6M-Ade"/>
+                        <outlet property="balanceLevelIndicator" destination="Vyc-zy-WNL" id="78N-o2-892"/>
+                    </connections>
+                </viewController>
+                <customObject id="Ibx-VW-bcu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="151" y="1153"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Down" width="22" height="22"/>
+        <image name="Up" width="22" height="22"/>
+    </resources>
 </document>

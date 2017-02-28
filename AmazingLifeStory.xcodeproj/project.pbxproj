@@ -16,6 +16,7 @@
 		DA4535961E57EB6900DFA326 /* LivingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4535951E57EB6900DFA326 /* LivingObject.swift */; };
 		DAFBFBFA1E61338000E2A8BF /* LivingObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBFBF91E61338000E2A8BF /* LivingObjectView.swift */; };
 		DAFBFBFD1E61CACC00E2A8BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFBFBFC1E61CACC00E2A8BF /* QuartzCore.framework */; };
+		DAFBFBFF1E654F7400E2A8BF /* CustomGeneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBFBFE1E654F7300E2A8BF /* CustomGeneViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		DA4535951E57EB6900DFA326 /* LivingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivingObject.swift; sourceTree = "<group>"; };
 		DAFBFBF91E61338000E2A8BF /* LivingObjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivingObjectView.swift; sourceTree = "<group>"; };
 		DAFBFBFC1E61CACC00E2A8BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DAFBFBFE1E654F7300E2A8BF /* CustomGeneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGeneViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,12 +106,12 @@
 			isa = PBXGroup;
 			children = (
 				DA45356A1E57EADB00DFA326 /* AppDelegate.swift */,
-				DA45356C1E57EADB00DFA326 /* ViewController.swift */,
+				DAFBFC011E654F9A00E2A8BF /* Model */,
+				DAFBFC021E654FA800E2A8BF /* View */,
+				DAFBFC001E654F8000E2A8BF /* Controller */,
 				DA45356E1E57EADB00DFA326 /* Assets.xcassets */,
 				DA4535701E57EADB00DFA326 /* Main.storyboard */,
 				DA4535731E57EADB00DFA326 /* Info.plist */,
-				DA4535951E57EB6900DFA326 /* LivingObject.swift */,
-				DAFBFBF91E61338000E2A8BF /* LivingObjectView.swift */,
 			);
 			path = AmazingLifeStory;
 			sourceTree = "<group>";
@@ -138,6 +140,31 @@
 				DAFBFBFC1E61CACC00E2A8BF /* QuartzCore.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DAFBFC001E654F8000E2A8BF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DA45356C1E57EADB00DFA326 /* ViewController.swift */,
+				DAFBFBFE1E654F7300E2A8BF /* CustomGeneViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		DAFBFC011E654F9A00E2A8BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DA4535951E57EB6900DFA326 /* LivingObject.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DAFBFC021E654FA800E2A8BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DAFBFBF91E61338000E2A8BF /* LivingObjectView.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +304,7 @@
 				DAFBFBFA1E61338000E2A8BF /* LivingObjectView.swift in Sources */,
 				DA4535961E57EB6900DFA326 /* LivingObject.swift in Sources */,
 				DA45356B1E57EADB00DFA326 /* AppDelegate.swift in Sources */,
+				DAFBFBFF1E654F7400E2A8BF /* CustomGeneViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

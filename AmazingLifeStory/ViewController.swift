@@ -22,6 +22,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var geneColorB: NSTextField!
     @IBOutlet weak var geneChildrenCountTextField: NSTextField!
     @IBOutlet weak var lengthOfFirstBirthTextField: NSTextField!
+    @IBOutlet weak var evoStepIndicator: NSLevelIndicator!
     
     var runningTimes = 0
     var evoluting = false
@@ -51,7 +52,7 @@ class ViewController: NSViewController {
         geneColorR.stringValue = String(obj.geneColorR.geneValue)
         geneColorG.stringValue = String(obj.geneColorG.geneValue)
         geneColorB.stringValue = String(obj.geneColorB.geneValue)
-        geneChildrenCountTextField.stringValue = String(obj.geneChildrenCount.geneValue)
+        geneChildrenCountTextField.stringValue = String(Int(obj.geneChildrenCount.geneValue))
         lengthOfFirstBirthTextField.stringValue = String(obj.geneLengthOfFirstBranch.geneValue)
     }
     

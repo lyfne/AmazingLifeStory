@@ -29,15 +29,13 @@ class LivingObjectView: NSView {
                     
                     if (parentNode.childLeft != nil && parentNode.childRight != nil)
                     {
-                        let pathL = NSBezierPath()
-                        pathL.move(to: parentNode.position)
-                        pathL.curve(to: parentNode.childLeft!.position, controlPoint1: NSPoint(x:parentNode.childLeft!.position.x, y:parentNode.position.y), controlPoint2: NSPoint(x:parentNode.childLeft!.position.x, y:parentNode.position.y))
-                        let pathR = NSBezierPath()
-                        pathR.move(to: parentNode.position)
-                        //pathR.line(to: parentNode.childRight!.position)
-                        pathR.curve(to: parentNode.childRight!.position, controlPoint1: NSPoint(x:parentNode.childRight!.position.x, y:parentNode.position.y), controlPoint2: NSPoint(x:parentNode.childRight!.position.x, y:parentNode.position.y))
-                        finalPath.append(pathL)
-                        finalPath.append(pathR)
+                        let path = NSBezierPath()
+                        path.move(to: parentNode.childLeft!.position)
+                        //path.curve(to: parentNode.childLeft!.position, controlPoint1: NSPoint(x:parentNode.childLeft!.position.x, y:parentNode.position.y), controlPoint2: NSPoint(x:parentNode.childLeft!.position.x, y:parentNode.position.y))
+                        path.line(to: parentNode.position)
+                        path.line(to: parentNode.childRight!.position)
+                        //pathR.curve(to: parentNode.childRight!.position, controlPoint1: NSPoint(x:parentNode.childRight!.position.x, y:parentNode.position.y), controlPoint2: NSPoint(x:parentNode.childRight!.position.x, y:parentNode.position.y))
+                        finalPath.append(path)
                     }
                 }
             }

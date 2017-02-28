@@ -36,13 +36,17 @@ class Gene: NSObject {
     }
     
     func evolution() {
-        if (arc4random_uniform(9) < 5) {
-            if (geneValue + geneEvoStep < upperBound) {
-                geneValue += geneEvoStep
+        var localEvoStep = geneEvoStep
+        if (arc4random_uniform(2) == 0) {
+            localEvoStep *= 1.7
+        }
+        if (arc4random_uniform(2) == 0) {
+            if (geneValue + localEvoStep < upperBound) {
+                geneValue += localEvoStep
             }
         }else {
-            if (geneValue - geneEvoStep > lowerBound) {
-                geneValue -= geneEvoStep
+            if (geneValue - localEvoStep > lowerBound) {
+                geneValue -= localEvoStep
             }
         }
     }
@@ -50,16 +54,16 @@ class Gene: NSObject {
 
 class LivingObject: NSObject {
     //Gene
-    var geneOddLength = Gene(id: 0, name: "GeneOddLength", value: 0.6, evoStep:0.03)
-    var geneEvenLength = Gene(id: 1, name: "GeneEvenLength", value: 0.6, evoStep:0.03)
-    var geneOddAngle = Gene(id: 2, name: "GeneOddAngle", value: 0.25, evoStep:0.03)
-    var geneEvenAngle = Gene(id: 3, name: "GeneEvenAngle", value: 0.25, evoStep:0.03)
+    var geneOddLength = Gene(id: 0, name: "GeneOddLength", value: 0.6, evoStep:0.02)
+    var geneEvenLength = Gene(id: 1, name: "GeneEvenLength", value: 0.6, evoStep:0.02)
+    var geneOddAngle = Gene(id: 2, name: "GeneOddAngle", value: 0.25, evoStep:0.02)
+    var geneEvenAngle = Gene(id: 3, name: "GeneEvenAngle", value: 0.25, evoStep:0.02)
     var geneNonFirstChildAngleRateLeft = Gene(id: 4, name: "GeneAngleRateLeft", value: 1.0, evoStep:0.03) //Right is 2.0 - left
-    var geneColorR = Gene(id: 5, name: "GeneColorR", value: 0.0, evoStep:0.06)
-    var geneColorG = Gene(id: 6, name: "GeneColorG", value: 0.0, evoStep:0.06)
-    var geneColorB = Gene(id: 7, name: "GeneColorB", value: 0.0, evoStep:0.06)
+    var geneColorR = Gene(id: 5, name: "GeneColorR", value: 0.0, evoStep:0.04)
+    var geneColorG = Gene(id: 6, name: "GeneColorG", value: 0.0, evoStep:0.04)
+    var geneColorB = Gene(id: 7, name: "GeneColorB", value: 0.0, evoStep:0.04)
     var geneChildrenCount = Gene(id: 8, name: "GeneChildrenCount", value: 5.0, evoStep:1.0)
-    var geneLengthOfFirstBranch = Gene(id: 9, name: "GeneLengthOfFirstBranch", value: 40.0, evoStep:5.0)
+    var geneLengthOfFirstBranch = Gene(id: 9, name: "GeneLengthOfFirstBranch", value: 40.0, evoStep:4.0)
     var genes = [Gene]()
     
     var nodes = [Node]()
