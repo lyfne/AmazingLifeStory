@@ -39,7 +39,7 @@ class ViewController: NSViewController {
             self.view.addSubview(controller.view)
             controller.fillData(gene: genes[index])
             controller.view.frame.origin.x = 526
-            controller.view.frame.origin.y = CGFloat(474 - index * 27);
+            controller.view.frame.origin.y = CGFloat(454 - index * 27);
             
             geneVCs.append(controller)
         }

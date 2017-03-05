@@ -17,6 +17,7 @@
 		DAFBFBFA1E61338000E2A8BF /* LivingObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBFBF91E61338000E2A8BF /* LivingObjectView.swift */; };
 		DAFBFBFD1E61CACC00E2A8BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFBFBFC1E61CACC00E2A8BF /* QuartzCore.framework */; };
 		DAFBFBFF1E654F7400E2A8BF /* CustomGeneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBFBFE1E654F7300E2A8BF /* CustomGeneViewController.swift */; };
+		DAFBFC091E6C3BB800E2A8BF /* NewGenerationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBFC081E6C3BB800E2A8BF /* NewGenerationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		DAFBFBF91E61338000E2A8BF /* LivingObjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivingObjectView.swift; sourceTree = "<group>"; };
 		DAFBFBFC1E61CACC00E2A8BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DAFBFBFE1E654F7300E2A8BF /* CustomGeneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGeneViewController.swift; sourceTree = "<group>"; };
+		DAFBFC081E6C3BB800E2A8BF /* NewGenerationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGenerationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			children = (
 				DA45356C1E57EADB00DFA326 /* ViewController.swift */,
 				DAFBFBFE1E654F7300E2A8BF /* CustomGeneViewController.swift */,
+				DAFBFC081E6C3BB800E2A8BF /* NewGenerationViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				DA45356D1E57EADB00DFA326 /* ViewController.swift in Sources */,
 				DAFBFBFA1E61338000E2A8BF /* LivingObjectView.swift in Sources */,
 				DA4535961E57EB6900DFA326 /* LivingObject.swift in Sources */,
+				DAFBFC091E6C3BB800E2A8BF /* NewGenerationViewController.swift in Sources */,
 				DA45356B1E57EADB00DFA326 /* AppDelegate.swift in Sources */,
 				DAFBFBFF1E654F7400E2A8BF /* CustomGeneViewController.swift in Sources */,
 			);
