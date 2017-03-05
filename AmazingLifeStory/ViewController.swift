@@ -12,25 +12,16 @@ class ViewController: NSViewController {
 
     @IBOutlet weak var RunningTimesTextField: NSTextField!
     @IBOutlet weak var livingObjectWindow: LivingObjectView!
-    @IBOutlet weak var geneOddLengthTextField: NSTextField!
-    @IBOutlet weak var geneEvenLengthTextField: NSTextField!
-    @IBOutlet weak var geneOddAngleTextField: NSTextField!
-    @IBOutlet weak var geneEvenAngleTextField: NSTextField!
-    @IBOutlet weak var geneAngleRateLeftTextField: NSTextField!
-    @IBOutlet weak var geneColorR: NSTextField!
-    @IBOutlet weak var geneColorG: NSTextField!
-    @IBOutlet weak var geneColorB: NSTextField!
-    @IBOutlet weak var geneChildrenCountTextField: NSTextField!
-    @IBOutlet weak var lengthOfFirstBirthTextField: NSTextField!
-    @IBOutlet weak var evoStepIndicator: NSLevelIndicator!
     
     var runningTimes = 0
     var evoluting = false
     var timer: Timer?
+    var geneVCs = [CustomGeneViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initGeneControlView()
         updateUI()
     }
 
@@ -40,55 +31,35 @@ class ViewController: NSViewController {
         }
     }
 
+    func initGeneControlView() {
+        let genes = livingObjectWindow.livingObject.genes
+        for index in 0...genes.count-1 {
+            let controller = self.storyboard?.instantiateController(withIdentifier: "CustomGeneViewController") as! CustomGeneViewController
+            self.addChildViewController(controller)
+            self.view.addSubview(controller.view)
+            controller.fillData(gene: genes[index])
+            controller.view.frame.origin.x = 526
+            controller.view.frame.origin.y = CGFloat(474 - index * 27);
+            
+            geneVCs.append(controller)
+        }
+    }
+    
     func updateUI() {
         RunningTimesTextField.stringValue = "Times: " + String(runningTimes)
-        
-        let obj = livingObjectWindow.getLivingObject()
-        geneOddLengthTextField.stringValue = String(obj.geneOddLength.geneValue)
-        geneEvenLengthTextField.stringValue = String(obj.geneEvenLength.geneValue)
-        geneOddAngleTextField.stringValue = String(obj.geneOddAngle.geneValue)
-        geneEvenAngleTextField.stringValue = String(obj.geneEvenAngle.geneValue)
-        geneAngleRateLeftTextField.stringValue = String(obj.geneNonFirstChildAngleRateLeft.geneValue)
-        geneColorR.stringValue = String(obj.geneColorR.geneValue)
-        geneColorG.stringValue = String(obj.geneColorG.geneValue)
-        geneColorB.stringValue = String(obj.geneColorB.geneValue)
-        geneChildrenCountTextField.stringValue = String(Int(obj.geneChildrenCount.geneValue))
-        lengthOfFirstBirthTextField.stringValue = String(obj.geneLengthOfFirstBranch.geneValue)
+        for index in 0...geneVCs.count-1 {
+            geneVCs[index].updateData()
+        }
+    }
+    
+    func applyDada() {
+        for index in 0...geneVCs.count-1 {
+            geneVCs[index].applyData()
+        }
     }
     
     @IBAction func generateLife(_ sender: Any) {
-        let obj = livingObjectWindow.getLivingObject()
-        if(geneOddLengthTextField.doubleValue > 0.0) {
-            obj.geneOddLength.geneValue = geneOddLengthTextField.doubleValue
-        }
-        if(geneEvenLengthTextField.doubleValue > 0.0) {
-            obj.geneEvenLength.geneValue = geneEvenLengthTextField.doubleValue
-        }
-        if(geneOddAngleTextField.doubleValue > 0.0 && geneOddAngleTextField.doubleValue < 2.0) {
-            obj.geneOddAngle.geneValue = geneOddAngleTextField.doubleValue
-        }
-        if(geneEvenAngleTextField.doubleValue > 0.0 && geneEvenAngleTextField.doubleValue < 2.0) {
-            obj.geneEvenAngle.geneValue = geneEvenAngleTextField.doubleValue
-        }
-        if(geneAngleRateLeftTextField.doubleValue > 0 && geneAngleRateLeftTextField.doubleValue < 2.0) {
-            obj.geneNonFirstChildAngleRateLeft.geneValue = geneAngleRateLeftTextField.doubleValue
-        }
-        if(geneColorR.doubleValue > 0 && geneColorR.doubleValue < 1.0) {
-            obj.geneColorR.geneValue = geneColorR.doubleValue
-        }
-        if(geneColorG.doubleValue > 0 && geneColorG.doubleValue < 1.0) {
-            obj.geneColorG.geneValue = geneColorG.doubleValue
-        }
-        if(geneColorB.doubleValue > 0 && geneColorB.doubleValue < 1.0) {
-            obj.geneColorB.geneValue = geneColorB.doubleValue
-        }
-        if(geneChildrenCountTextField.integerValue > 0 && geneChildrenCountTextField.integerValue <= 10) {
-            obj.geneChildrenCount.geneValue = geneChildrenCountTextField.doubleValue
-        }
-        if (lengthOfFirstBirthTextField.doubleValue >= 0.0 && lengthOfFirstBirthTextField.doubleValue <= 100.0) {
-            obj.geneLengthOfFirstBranch.geneValue = lengthOfFirstBirthTextField.doubleValue
-        }
-        
+        applyDada()
         livingObjectWindow.show()
     }
     

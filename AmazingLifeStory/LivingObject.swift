@@ -27,6 +27,7 @@ class Gene: NSObject {
     var geneEvoStep = 0.0
     var upperBound = 1.0
     var lowerBound = 0.0
+    var upOrDownTrend: Int = 5
     
     init(id: Int, name: String, value: Double, evoStep: Double) {
         geneId = id
@@ -40,7 +41,7 @@ class Gene: NSObject {
         if (arc4random_uniform(2) == 0) {
             localEvoStep *= 1.7
         }
-        if (arc4random_uniform(2) == 0) {
+        if (arc4random_uniform(10) < UInt32(upOrDownTrend)) {
             if (geneValue + localEvoStep < upperBound) {
                 geneValue += localEvoStep
             }
@@ -102,12 +103,6 @@ class LivingObject: NSObject {
         phenotypeEvenLength = geneLengthOfFirstBranch.geneValue
         
         nodes.removeAll()
-    }
-    
-    func log() {
-        for index in 0...nodes.count-1 {
-            print(nodes[index].position)
-        }
     }
     
     func growUp(growCount: Int, parentNode: Node) {
